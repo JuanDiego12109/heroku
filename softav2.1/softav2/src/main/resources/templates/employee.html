@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/1e68ffedd1.js" crossorigin="anonymous"></script>
+    <title>Sistema Ingreso</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="logo">
+                <img src="img/1.png" alt="">
+            </div>  
+
+            <div class="cont-directory">
+                <div class="directory">
+                    <a href="/sistemaIngresos">Ingreso y egresos</a>
+                </div>
+                <div class="directory">
+                    <a href="/employee">Usuarios</a>
+                </div>
+                <div class="directory">
+                    <a href="/enterprise">Empresas</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ingresos">
+            <div class="contIngreso">
+                <div class="title1">
+                    <h2>Sistema de gestión de Ingresos y Gastos</h2>
+                </div>
+
+                <div class="usuarioTitle">
+                    <h3>Usuarios</h3>
+                </div>
+
+
+                <div class="nuevoingreso">
+<!--                    <h3><a href="/employee-new">Nuevo Usuario</a></h3>-->
+                    <h3><a href="@{/employee-new}">Nuevo Usuario</a></h3>
+                </div>
+
+
+                <div class="mostrarDatos">
+                    <div class="hdatesUsuarios">
+
+                        <div class="cabeceraInt">
+                            <table>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Teléfono</th>
+                                    <th>rol</th>
+<!--                                    <th>Fecha Creación</th>-->
+<!--                                    <th>Fecha Actulizacion</th>-->
+                                    <th>Editar</th>
+                                    <th>Borrar</th>
+                                </tr>
+                                <tr th:each="employee : ${employees}">
+                                    <td th:text="${employee.nombre}"></td>
+                                    <td th:text="${employee.correo}"></td>
+                                    <td th:text="${employee.telefono}"></td>
+                                    <td th:text="${employee.rol}"></td>
+                                    <td><a th:href="@{/employee/editar/{id} (id = ${employee.id})}"><i class="fa-regular fa-pen-to-square edit"></i></a></td>
+                                    <td><a th:href="@{/employee/borrar/{id} (id = ${employee.id})}"><i class="fa-regular fa-trash-can"></i></a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
